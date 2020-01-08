@@ -1,0 +1,96 @@
+<jaspero-confirmations></jaspero-confirmations>
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title mt-0"> Table utilisateur</h4>
+            <p class="card-category"> Liste</p>
+          </div>
+          <div class="card-body">
+            <div class="floatL t5">
+              <a class="btn btn-default" [routerLink]="['/create-utilisateur']"><i class="fa fa-plus"></i> &nbsp;
+                Ajouter
+                utilisateur</a>
+            </div>
+            <div class="table-sm table-responsive">
+              <table class="table table-hover table-bordered">
+                <thead class="thead-light">
+                  <th scope="col">Actions</th>
+                  <th scope="col">Login</th>
+                  <th scope="col">Nom</th>
+                  <th scope="col">Prènom</th>
+                  <th scope="col">Fonction</th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let utilisateur of pagedItems">
+                    <td scope="row">
+                      <div class="only-desktops" style="white-space: nowrap">
+                        <a [routerLink]="['/update-utilisateur']"
+                          [queryParams]="{id_utilisateur: utilisateur.id_utilisateur}">
+                          <i class="fa fa-pencil" style="font-size:25px;color: #3458a6"></i></a>
+                        <div class="btn-group">
+                          <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-plus" aria-hidden="true" style="font-size:25px;color: #3458a6"></i>
+                          </a>
+                          <ul class="dropdown-menu">
+                            <li>
+                              <a [routerLink]="['/view-utilisateur']"
+                                [queryParams]="{id_utilisateur: utilisateur.id_utilisateur}">
+                                <i class="fa fa-eye"></i>Vue</a>
+                            </li>
+                            <li>
+                              <a [routerLink]="['/profil']"
+                                [queryParams]="{id_utilisateur: utilisateur.id_utilisateur}">
+                                <i class="fa fa-key" aria-hidden="true"></i> Accés </a>
+                            </li>
+                            <li>
+                              <a (click)="deleteUtilisateur(utilisateur.id_utilisateur)" title="Delete"
+                                class="delete-row">
+                                <i class="fa fa-trash-o text-danger"></i>
+                                <span class="text-danger">Effacer</span>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+
+
+                      </div>
+                    </td>
+                    <td scope="row">{{utilisateur.login}}</td>
+                    <td scope="row">{{utilisateur.nom_utlisateur}}</td>
+                    <td scope="row">{{utilisateur.prenom_utilisateur}}</td>
+                    <td scope="row">{{utilisateur.fonction_utilisateur}}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <!-- pager -->
+              <nav aria-label="Page navigation example">
+                <ul class="pagination pagination-circle pg-blue" *ngIf="pager.pages && pager.pages.length">
+                  <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
+                    <a class="page-link" (click)="setPage(1)">Premier</a>
+                  </li>
+                  <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
+                    <a class="page-link" (click)="setPage(pager.currentPage - 1)">Précédent</a>
+                  </li>
+                  <li class="page-item" *ngFor="let page of pager.pages"
+                    [ngClass]="{active:pager.currentPage === page}">
+                    <a class="page-link" (click)="setPage(page)">{{page}}</a>
+                  </li>
+                  <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                    <a class="page-link" (click)="setPage(pager.currentPage + 1)">Suivant</a>
+                  </li>
+                  <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                    <a class="page-link" (click)="setPage(pager.totalPages)">Dernier</a>
+                  </li>
+                </ul>
+              </nav>
+              <!-- pager -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

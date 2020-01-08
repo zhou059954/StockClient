@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>plus combien ?</h2>
+<mat-dialog-content>
+  <div class="col-md-12">
+    <mat-form-field class="example-full-width">
+      <input matInput type="number" [(ngModel)]="data.plus" placeholder="Augmenter">
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Retour</button>
+  <button mat-button [mat-dialog-close]="data.plus" cdkFocusInitial>Plus</button>
+</mat-dialog-actions>

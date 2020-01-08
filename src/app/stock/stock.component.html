@@ -1,0 +1,32 @@
+<br />
+<br />
+<br />
+<div class="tab-content" id="showRoutineTabContent">
+  <!-- Single Tab Content -->
+  <div class="tab-pane fade active show" id="tab1" role="tabpanel" aria-labelledby="tab-1">
+    <div class="row">
+      <!-- Single Show Item -->
+      <div class="col-12 col-md-6 col-lg-4" *ngFor="let stock of allStocks">
+        <div class="single-show-item mb-30">
+
+          <img src="https://stockfruit.herokuapp.com/uploads/images/{{stock.image}}.jpg" alt="">
+          <div class="overlay-content">
+            <div class="text-center">
+
+              <span>{{stock.nom}}</span>
+
+              <a [routerLink]="['/homepage']" [queryParams]="{id:stock._id}" (click)="openDialog()">
+                <i class="material-icons" style="font-size:55px;color:rgb(19, 180, 40)">add</i>
+              </a>
+              <h5>{{stock.total}}</h5>
+              <a [routerLink]="['/homepage']" [queryParams]="{id:stock._id}" (click)="openDialogMoin()">
+                <i class="material-icons" style="font-size:55px;color:red">remove</i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

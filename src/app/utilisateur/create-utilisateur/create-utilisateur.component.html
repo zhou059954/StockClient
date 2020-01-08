@@ -1,0 +1,95 @@
+<div class="login-page">
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-md-7">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h3 class="card-title justify-content-md-center"> <img src="assets/images/icon_1.png" width="50px"
+                class="user-avatar justify-content-md-center" />Taloutalou</h3>
+            <p class="card-category">Complète ton profil</p>
+          </div>
+          <div class="card-body">
+            <br />
+            <div *ngIf="statusCode; else processing">
+              <div *ngIf="statusCode === 201" [ngClass]="'success'">
+                Utilisateur ajouté avec succès
+              </div>
+              <div *ngIf="statusCode === 409" [ngClass]="'success'">
+                Utilisateur existe déjà ,.
+              </div>
+
+              <div *ngIf="statusCode === 500" [ngClass]="'error'">
+                Erreur Interne du Serveur.
+              </div>
+            </div>
+
+            <ng-template #processing>
+              <img *ngIf="requestProcessing" src="../../../assets/img/loader.gif">
+            </ng-template>
+
+            <form [formGroup]="utilisateurForm" (ngSubmit)="onUtilisateurFormSubmit()">
+              <div class="row">
+                <!--<div class="col-md-5">
+                                  <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="Company (disabled)" disabled>
+                                    </mat-form-field>
+                                </div> -->
+                <div class="col-md-9">
+                  <mat-form-field class="example-full-width">
+                    <input formControlName="nom" matInput placeholder="Nom">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-9">
+                  <mat-form-field class="example-full-width">
+                    <input type="text" formControlName="prenom" matInput placeholder="Prénom">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-9">
+                  <mat-form-field>
+                    <input formControlName="date_naissance" matInput [matDatepicker]="picker"
+                      placeholder="Date de naissance">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+
+                <div class="col-md-9">
+                  <mat-form-field class="example-full-width">
+                    <input formControlName="lieu" matInput placeholder="Lieu" type="text">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-9">
+                  <mat-form-field class="example-full-width">
+                    <input formControlName="email" matInput placeholder="Email" type="email">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-9">
+                  <mat-form-field class="example-full-width">
+                    <input formControlName="mdp" matInput placeholder="Mot de passe" type="password">
+                  </mat-form-field>
+                </div>
+              </div>
+              <button mat-raised-button type="submit" class="btn btn-danger pull-right">s'inscrir</button>
+              <div class="col-sm-offset-3 col-sm-7">
+                <button class="btn btn-default cancel-button" (click)="goBack()" type="button">
+                  <i class="fa fa-arrow-left"></i>
+                  Se connecter </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

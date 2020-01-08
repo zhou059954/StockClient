@@ -1,0 +1,30 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h2 class="card-title" *ngIf="nom_newplaylist">
+              <div class="section_title text-center" *ngFor="let playlist of new">Playlist {{playlist.nom}}</div>
+            </h2>
+            <h2 class="card-title" *ngIf="!nom_newplaylist">
+              <div class="section_title text-center">Liste de stocks</div>
+            </h2>
+          </div>
+          <br />
+
+          <div class="card-body">
+            <div class=row>
+              <app-stock></app-stock>
+            </div>
+
+            <ng-template #processing>
+              <img *ngIf="requestProcessing" src="assets/images/loading.gif">
+            </ng-template>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

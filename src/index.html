@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+
+<head>
+  <base href='/'>
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png" />
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+  <title>Stock Fruits</title>
+
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+  <meta name="viewport" content="width=device-width" />
+
+  <!--     Fonts and icons     -->
+  <!-- bootstrap css -->
+
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet'
+    type='text/css'>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR-KEY-HERE"></script>
+  <style type="text/css">
+    body {
+      background: #FFFFFF url("../assets/img/fond-1.jpg") no-repeat center center fixed;
+      background-position: center;
+      margin: auto;
+      background-image: #FFF;
+    }
+
+    .loader {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transform: -webkit-translate(-50%, -50%);
+      transform: -moz-translate(-50%, -50%);
+      transform: -ms-translate(-50%, -50%);
+    }
+  </style>
+</head>
+
+<body>
+  <app-root>
+    <div class="loader">
+      <mat-progress-spinner style="margin:0 auto;" *ngIf="isLoading" mode="indeterminate">
+        <img src="../assets/img/09b24e31234507.564a1d23c07b4.gif">
+      </mat-progress-spinner>
+      <svg class="circular" viewBox="25 25 50 50">
+        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+      </svg>
+    </div>
+  </app-root>
+</body>
+
+
+</html>
