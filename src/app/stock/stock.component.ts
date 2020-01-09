@@ -18,10 +18,11 @@ import { MoinComponent } from './moin/moin.component';
   styleUrls: ['./stock.component.scss']
 })
 export class StockComponent implements OnInit {
-
+  loading = false;
   allStocks: Stock[];
   statusCode: number;
   requestProcessing = false;
+  processValidation = false;
   pager: any = {};
   pagedItems: any[];
   supprimes: Stock;
@@ -31,11 +32,12 @@ export class StockComponent implements OnInit {
   stockMoin: number;
   stockIdToUpdate = null;
   id_stock: string;
-  totalS: number = 0;
-  stockTotal: number;
+  quantiteS: number = 0;
+  puS: number = 0;
+  stockQuantite: number;
   imageS = null;
   nomS = null;
-  totalStock = null;
+  quantiteStock = null;
 
   settings: ConfirmSettings | any = {
     overlay: true,
@@ -49,7 +51,8 @@ export class StockComponent implements OnInit {
     //  _id: new FormControl('', Validators.required),
     image: new FormControl('', Validators.required),
     nom: new FormControl('', Validators.required),
-    total: new FormControl('', Validators.required)
+    quantite: new FormControl('', Validators.required),
+    PU: new FormControl('', Validators.required)
   });
 
 
@@ -121,36 +124,43 @@ export class StockComponent implements OnInit {
         this.stockIdToUpdate = stock._id;
         this.imageS = stock.image;
         this.nomS = stock.nom;
-        this.totalS = stock.total;
+        this.quantiteS = stock.quantite;
         this.stockForm.setValue({
           image: stock.image,
           nom: stock.nom,
-          total: stock.total
+          quantite: stock.quantite,
+          PU: stock.PU
         });
       },
         errorCode => this.statusCode = errorCode);
   }
 
   onStockFormSubmit(stockenplus: number, _id: string) {
-    //this.totalS = this.stockForm.get('total').value;
+    //this.quantiteS = this.stockForm.get('quantite').value;
+    this.processValidation = true;
+    this.preProcessConfigurations();
+    this.loading = true;
     this.stockService.getStockById(_id)
       .subscribe(stock => {
         this.stockIdToUpdate = stock._id;
         this.imageS = stock.image;
         this.nomS = stock.nom;
-        this.totalS = stock.total;
-        this.stockTotal = (this.totalS * 1) + (stockenplus * 1) * 1;
-        if (this.stockTotal > 0)
-          console.log("firy =" + this.stockTotal)
-        let stocks = new Stock(this.stockIdToUpdate, this.imageS, this.nomS, this.stockTotal);
+        this.quantiteS = stock.quantite;
+        this.puS = stock.PU;
+        this.stockQuantite = this.quantiteS;
+        let stocks = new Stock(this.stockIdToUpdate, this.imageS, this.nomS, this.stockQuantite, this.puS);
         console.log(stocks);
-        this.stockService.updateStock(stocks, _id)
+        this.stockService.updateStock(stocks, _id, stockenplus)
           .subscribe(successCode => {
             this.getAllStocks();
             this.statusCode = successCode;
           },
             errorCode => this.statusCode = errorCode);
       });
+
+    this.processValidation = false;
+    this.preProcessConfigurations();
+    this.loading = false;
   }
 
 
