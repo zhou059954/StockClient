@@ -52,10 +52,11 @@ export class StockService {
             .catch(this.handleError);
     }
 
-    updateStock(stock: Stock, id_stock: string): Observable<number> {
+    updateStock(stock: Stock, id_stock: string,stockenplus): Observable<number> {
         const cpHeaders = new Headers({ 'Content-Type': 'application/json' });
         const cpParams = new URLSearchParams();
         cpParams.set('id', id_stock);
+        cpParams.set('stockplus', stockenplus);
         const options = new RequestOptions({ headers: cpHeaders, params: cpParams });
         console.log("update /////" + this.StockUrl + 'stock', stock, options);
         return this.http.put(this.StockUrl + 'stock', stock, options)
