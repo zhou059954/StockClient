@@ -1,4 +1,4 @@
-<div *ngIf="statusCode; else processing">
+<div *ngIf="statusCode">
   <div *ngIf="statusCode === 500" [ngClass]="'error'">
     Le stock ne peut pas être négative
   </div>
