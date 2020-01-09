@@ -137,9 +137,6 @@ export class StockComponent implements OnInit {
 
   onStockFormSubmit(stockenplus: number, _id: string) {
     //this.quantiteS = this.stockForm.get('quantite').value;
-    this.processValidation = true;
-    this.preProcessConfigurations();
-    this.loading = true;
     this.stockService.getStockById(_id)
       .subscribe(stock => {
         this.stockIdToUpdate = stock._id;
@@ -157,10 +154,6 @@ export class StockComponent implements OnInit {
           },
             errorCode => this.statusCode = errorCode);
       });
-
-    this.processValidation = false;
-    this.preProcessConfigurations();
-    this.loading = false;
   }
 
 
