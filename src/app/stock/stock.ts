@@ -3,7 +3,8 @@ export class Stock {
         public _id: string,
         public image: string,
         public nom: string,
-        public total: number
+        public quantite: number,
+        public PU: number
     ) {
     }
 }
