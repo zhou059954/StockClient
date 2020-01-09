@@ -11,7 +11,7 @@ import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { DatePipe } from '@angular/common';
-import { MatDatepickerModule, MatNativeDateModule, MatFormFieldModule, MatDialog, MatDialogModule, MatSelectModule, MatCheckboxModule, MatAutocompleteModule } from '@angular/material';
+import { MatDatepickerModule, MatNativeDateModule, MatFormFieldModule, MatDialog, MatDialogModule, MatSelectModule, MatCheckboxModule, MatAutocompleteModule, MatProgressSpinnerModule } from '@angular/material';
 
 
 import {
@@ -59,7 +59,8 @@ import { MoinComponent } from 'app/stock/moin/moin.component';
     JasperoConfirmationsModule,
     MatCheckboxModule,
     DragulaModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatProgressSpinnerModule
   ],
 
 
