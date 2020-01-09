@@ -22,7 +22,6 @@ export class StockComponent implements OnInit {
   allStocks: Stock[];
   statusCode: number;
   requestProcessing = false;
-  processValidation = false;
   pager: any = {};
   pagedItems: any[];
   supprimes: Stock;
