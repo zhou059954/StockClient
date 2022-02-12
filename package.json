@@ -30,7 +30,7 @@
     "@angular/router": "5.2.9",
     "@jaspero/ng-confirmations": "^0.4.7",
     "@jaspero/ng2-confirmations": "^0.3.3",
-    "ajv": "6.4.0",
+    "ajv": "6.12.3",
     "arrive": "2.4.1",
     "bootstrap": "4.1.0",
     "bootstrap-material-design": "4.1.1",
